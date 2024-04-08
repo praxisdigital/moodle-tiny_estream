@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'tiny_estream';
-$plugin->release = '1.0.0';
-$plugin->version = 2023082500;
+$plugin->release = '1.0.1';
+$plugin->version = 2024040800;
 $plugin->requires = 2022041900;
 $plugin->maturity = MATURITY_ALPHA;
 $plugin->dependencies = [

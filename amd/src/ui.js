@@ -119,14 +119,12 @@ const displayDialogue = async(editor, data = {}) => {
                     if (data.indexOf("delta=") > -1) {
 
                         editor.execCommand('mceInsertContent', false, '<div style="position:relative;overflow:hidden;padding-top:56.25%;"><iframe allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" src="'
-                    + getQS(src, 'estream_url', true) + '/Embed.aspx?' + data + '" ></iframe><a href="'
-                    + '/_planetestreamiframe_/Embed.aspx?' + data + '">&nbsp;</a></div>');
+                    + getQS(src, 'estream_url', true) + '/Embed.aspx?' + data + '" ></iframe></div>');
                     modal.destroy();
                     } else {
                     
                         editor.execCommand('mceInsertContent', false, '<div style="position:relative;overflow:hidden;padding-top:56.25%;"><iframe allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" src="'
-                    + getQS(src, 'estream_url', true) + '/Embed.aspx?' + data + '&delta=ESDLTA" ></iframe><a href="'
-                    + '/_planetestreamiframe_/Embed.aspx?' + data + '">&nbsp;</a></div>');
+                    + getQS(src, 'estream_url', true) + '/Embed.aspx?' + data + '&delta=ESDLTA" ></iframe></div>');
                     modal.destroy();
                     }
                          
@@ -136,15 +134,13 @@ const displayDialogue = async(editor, data = {}) => {
                     
                         editor.execCommand('mceInsertContent', false, '<iframe allow="autoplay; fullscreen" allowfullscreen style="width: ' + getQS(src, 'estream_width') + 'px;'
                     + ' height: ' + getQS(src, 'estream_height') + 'px; border: 0;" src="'
-                    + getQS(src, 'estream_url') + '/Embed.aspx?' + data + '" ></iframe><a href="'
-                    + '/_planetestreamiframe_/Embed.aspx?' + data + '">&nbsp;</a>');
+                    + getQS(src, 'estream_url') + '/Embed.aspx?' + data + '" ></iframe>');
                     modal.destroy();
                     } else {
                     
                         editor.execCommand('mceInsertContent', false, '<iframe allow="autoplay; fullscreen" allowfullscreen style="width: ' + getQS(src, 'estream_width') + 'px;'
                     + ' height: ' + getQS(src, 'estream_height') + 'px; border: 0;" src="'
-                    + getQS(src, 'estream_url') + '/Embed.aspx?' + data + '&delta=ESDLTA" ></iframe><a href="'
-                    + '/_planetestreamiframe_/Embed.aspx?' + data + '">&nbsp;</a>');
+                    + getQS(src, 'estream_url') + '/Embed.aspx?' + data + '&delta=ESDLTA" ></iframe>');
                     modal.destroy();
                     }
                     
