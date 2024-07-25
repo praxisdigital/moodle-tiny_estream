@@ -26,6 +26,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'eStream';
+$string['tiny_estream:pluginname'] = 'eStream media';
 $string['privacy:metadata:tiny_estream'] = 'In order to integrate with eStream, user information must be relayed.';
 $string['privacy:metadata:tiny_estream:email'] = 'Your email is used to complete authentication between Moodle and eStream.';
 $string['privacy:metadata:tiny_estream:userid'] = 'Your user ID is used to find your email address.';
