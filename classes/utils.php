@@ -51,32 +51,37 @@ class utils {
     return urlencode($strobfuscated);
 }
 
- public static function tinymce_planetestream_getauthticket($url, $checksum, $delta, $userip, &$params) {
-  $return = '';
-  try {
-      $url .= '/VLE/Moodle/Auth/?source=1&checksum=' . $checksum . '&delta=' . $delta . '&u=' . $userip;
-      if (!$curl = curl_init($url)) {
-          return '';
-      }
-      curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 15);
-      curl_setopt($curl, CURLOPT_TIMEOUT, 15);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-      curl_setopt($curl, CURLOPT_MAXREDIRS, 4);
-      curl_setopt($curl, CURLOPT_FORBID_REUSE, true);
-      curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-      $response = curl_exec($curl);
-      if (strpos($response, '{"ticket":') === 0) {
-          $jobj = json_decode($response);
-          $return = $jobj->ticket;
-          $params['estream_height'] = $jobj->height;
-          $params['estream_width'] = $jobj->width;
-      }
-  } catch (Exception $e) {
-      // ... non-fatal ...
-  }
-  return $return;
-}
+    public static function tinymce_planetestream_getauthticket($url, $checksum, $delta, $userip, &$params) {
+        $return = '';
+        try {
+            $url .= '/VLE/Moodle/Auth/?source=1&checksum=' . $checksum . '&delta=' . $delta . '&u=' . $userip;
+
+            $curl = new \curl();
+            $curl->setopt([
+                'CONNECTTIMEOUT' => 10,
+                'TIMEOUT' => 10,
+                'RETURNTRANSFER' => true,
+                'FOLLOWLOCATION' => true,
+                'MAXREDIRS' => 4,
+                'FORBID_REUSE' => true,
+                'SSL_VERIFYPEER' => false
+            ]);
+
+            if (!$response = $curl->get($url)) {
+                return '';
+            }
+
+            if (strpos($response, '{"ticket":') === 0) {
+                $jobj = json_decode($response);
+                $return = $jobj->ticket;
+                $params['estream_height'] = $jobj->height;
+                $params['estream_width'] = $jobj->width;
+            }
+        } catch (Exception $e) {
+            // ... non-fatal ...
+        }
+        return $return;
+    }
 
     public static function funcBuildiFrame(): string {
       global $PAGE, $USER, $CFG;
